@@ -19,8 +19,8 @@ services:
     ports:
       - "15672:15672"
     environment:
-      - RABBITMQ_DEFAULT_USER: guest
-      - RABBITMQ_DEFAULT_PASS: guest
+      - RABBITMQ_DEFAULT_USER: "guest"
+      - RABBITMQ_DEFAULT_PASS: "guest"
 
   app:
     image: abdelrhmanaf/app:V1
@@ -28,7 +28,7 @@ services:
       - "8080:8080"
     volumes:
       - appappdata: /usr/local/tomcat/webapps
-      
+
   web:
     image: abdelrhmanaf/web:V1
     ports:
