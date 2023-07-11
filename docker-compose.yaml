@@ -1,0 +1,41 @@
+version: "3"
+services:
+  db:
+    image: abdelrhmanaf/db:V1
+    ports:
+      - "3306:3306"
+    volumes:
+      - appdbdata: /var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+
+  mc01:
+    image: memcached
+    ports:
+      - "11211:11211"
+
+  rmq01:
+    image: rabbitmq
+    ports:
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER: guest
+      - RABBITMQ_DEFAULT_PASS: guest
+
+  app:
+    image: abdelrhmanaf/app:V1
+    ports:
+      - "8080:8080"
+    volumes:
+      - appappdata: /usr/local/tomcat/webapps
+      
+  web:
+    image: abdelrhmanaf/web:V1
+    ports:
+      - "80:80"
+    
+
+
+volumes:
+  appdbdata: {}
+  appappdata: {}
