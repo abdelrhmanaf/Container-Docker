@@ -5,7 +5,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - appdbdata: /var/lib/mysql
+      - appdbdata:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=admin123
 
@@ -27,7 +27,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - appappdata: /usr/local/tomcat/webapps
+      - appappdata:/usr/local/tomcat/webapps
 
   web:
     image: abdelrhmanaf/web:V1
